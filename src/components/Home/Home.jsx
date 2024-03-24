@@ -31,9 +31,11 @@ const Home = () => {
         </div>
       </div>
       {/* FEATURED JOB SECTION */}
-      {jobData.map((job) => (
-        <Job key={job.id} job={job}></Job>
-      ))}
+      <div className="grid grid-cols-3 my-12 gap-12 container mx-auto">
+        {jobData.map((job) => (
+          <Job key={job.id} job={job}></Job>
+        ))}
+      </div>
     </div>
   );
 };
