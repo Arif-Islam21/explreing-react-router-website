@@ -1,9 +1,17 @@
+import { NavLink } from "react-router-dom";
+
 const Navbar = () => {
   const links = (
     <>
-      <li>Home</li>
-      <li>Contact</li>
-      <li>Blogs</li>
+      <NavLink to={"/home"}>
+        <button className="btn mx-2 px-4 font-medium">Home</button>
+      </NavLink>
+      <NavLink to={"/blogs"}>
+        <button className="btn mx-2 px-4 font-medium">Contact</button>
+      </NavLink>
+      <NavLink to={"/blogs"}>
+        <button className="btn mx-2 px-4 font-medium">Blogs</button>
+      </NavLink>
     </>
   );
 
