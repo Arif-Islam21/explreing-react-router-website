@@ -1,4 +1,13 @@
+import { useEffect, useState } from "react";
+import Job from "../Job/Job";
+
 const Home = () => {
+  const [jobData, setJobData] = useState([]);
+  useEffect(() => {
+    fetch("../../../public/jobs.json")
+      .then((res) => res.json())
+      .then((data) => setJobData(data));
+  }, []);
   return (
     <div>
       <div
@@ -21,6 +30,10 @@ const Home = () => {
           </div>
         </div>
       </div>
+      {/* FEATURED JOB SECTION */}
+      {jobData.map((job) => (
+        <Job key={job.id} job={job}></Job>
+      ))}
     </div>
   );
 };
