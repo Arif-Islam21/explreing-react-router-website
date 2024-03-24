@@ -3,6 +3,13 @@ import Job from "../Job/Job";
 
 const Home = () => {
   const [jobData, setJobData] = useState([]);
+
+  const [cartLength, setCartLength] = useState(4);
+
+  const handleShowAll = () => {
+    setCartLength(jobData.length);
+  };
+
   useEffect(() => {
     fetch("../../../public/jobs.json")
       .then((res) => res.json())
@@ -31,10 +38,17 @@ const Home = () => {
         </div>
       </div>
       {/* FEATURED JOB SECTION */}
-      <div className="grid grid-cols-3 my-12 gap-12 container mx-auto">
-        {jobData.map((job) => (
+      <div className="grid grid-cols-2 my-12 gap-12 container mx-auto">
+        {jobData.slice(0, cartLength).map((job) => (
           <Job key={job.id} job={job}></Job>
         ))}
+      </div>
+      <div className={cartLength === jobData.length && "hidden"}>
+        <div className="flex justify-center my-4">
+          <button onClick={handleShowAll} className="btn btn-primary">
+            Show All
+          </button>
+        </div>
       </div>
     </div>
   );
