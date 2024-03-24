@@ -4,8 +4,8 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./components/Routes/Root.jsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
-import Navbar from "./components/Navbar/Navbar.jsx";
 import Home from "./components/Home/Home.jsx";
+import JobDetails from "./components/JobDetails/JobDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,12 +14,13 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        path: "/navbar",
-        element: <Navbar></Navbar>,
-      },
-      {
         path: "/home",
         element: <Home></Home>,
+      },
+      {
+        path: "./job/:id",
+        element: <JobDetails></JobDetails>,
+        loader: () => fetch("jobs.json"),
       },
     ],
   },

@@ -43,8 +43,8 @@ const Home = () => {
           <Job key={job.id} job={job}></Job>
         ))}
       </div>
-      <div className={cartLength === jobData.length && "hidden"}>
-        <div className="flex justify-center my-4">
+      <div className="flex justify-center my-4">
+        <div className={cartLength === jobData.length ? "hidden" : "flex"}>
           <button onClick={handleShowAll} className="btn btn-primary">
             Show All
           </button>
